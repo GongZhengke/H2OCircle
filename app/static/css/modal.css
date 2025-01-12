@@ -1,0 +1,106 @@
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-backdrop.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    width: 90%;
+    max-width: 400px;
+    transform: scale(0.95);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.modal-backdrop.active .modal-content {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.modal-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FEE2E2;
+}
+
+.modal-icon svg {
+    width: 24px;
+    height: 24px;
+    color: #EF4444;
+}
+
+.modal-title {
+    text-align: center;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1F2937;
+    margin-top: 16px;
+}
+
+.modal-message {
+    text-align: center;
+    color: #6B7280;
+    margin-top: 8px;
+    font-size: 0.875rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.modal-btn {
+    flex: 1;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.2s;
+}
+
+.modal-btn.cancel {
+    background-color: #F3F4F6;
+    color: #4B5563;
+}
+
+.modal-btn.cancel:hover {
+    background-color: #E5E7EB;
+}
+
+.modal-btn.confirm {
+    background-color: #EF4444;
+    color: white;
+}
+
+.modal-btn.confirm:hover {
+    background-color: #DC2626;
+}
+
+.modal-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+} 

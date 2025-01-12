@@ -1,0 +1,117 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="max-w-2xl mx-auto px-4 py-2">
+    <!-- 顶部导航栏 -->
+    <header class="fixed top-0 left-0 right-0 bg-white border-b border-gray-100 z-50">
+        <div class="max-w-2xl mx-auto px-4 h-16 flex items-center justify-between">
+            <a href="{{ url_for('main.home') }}" class="text-gray-600 hover:text-gray-900">
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M15 19l-7-7 7-7"></path>
+                </svg>
+            </a>
+            <h1 class="text-xl font-semibold text-gray-900">个人资料</h1>
+            <div class="w-6"></div>
+        </div>
+    </header>
+
+    <div class="mt-20 space-y-6">
+        <!-- 基本信息 -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-lg font-semibold text-gray-900">基本信息</h2>
+                <button id="edit-profile" class="text-blue-600 hover:text-blue-700">编辑</button>
+            </div>
+            
+            <!-- 显示表单 -->
+            <form id="profile-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">昵称</label>
+                    <input type="text" 
+                        id="nickname" 
+                        name="nickname" 
+                        value="{{ user.nickname }}"
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        disabled
+                    >
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">积分</label>
+                    <div class="text-gray-900">{{ user.points }}</div>
+                </div>
+                <div class="flex justify-end pt-4 border-t border-gray-100 hidden" id="profile-actions">
+                    <button type="button" 
+                        id="cancel-profile" 
+                        class="px-4 py-2 text-gray-500 hover:text-gray-700 transition-colors mr-2">
+                        取消
+                    </button>
+                    <button type="submit" 
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        保存
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 手机号 -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-lg font-semibold text-gray-900">手机号</h2>
+                <button id="edit-phone" class="text-blue-600 hover:text-blue-700">修改</button>
+            </div>
+            
+            <div id="phone-display" class="text-gray-900">{{ user.phone }}</div>
+            
+            <!-- 修改手机号表单 -->
+            <form id="phone-form" class="space-y-4 hidden">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">新手机号</label>
+                    <div class="flex space-x-2">
+                        <input type="tel" 
+                            id="new-phone" 
+                            name="phone" 
+                            class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                            maxlength="11"
+                            placeholder="请输入新手机号"
+                        >
+                        <button type="button" 
+                            id="send-code" 
+                            class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                            发送
+                        </button>
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">验证码</label>
+                    <input type="text" 
+                        id="code" 
+                        name="code" 
+                        class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        maxlength="6"
+                        placeholder="请输入验证码"
+                    >
+                </div>
+                <div class="flex justify-end pt-4 border-t border-gray-100">
+                    <button type="button" 
+                        id="cancel-phone" 
+                        class="px-4 py-2 text-gray-500 hover:text-gray-700 transition-colors mr-2">
+                        取消
+                    </button>
+                    <button type="submit" 
+                        class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                        确认修改
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- 退出登录 -->
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100 p-6">
+            <button id="logout-btn" 
+                class="block w-full text-center py-3 text-red-600 hover:bg-red-50 rounded-lg transition-colors">
+                退出登录
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %} 
